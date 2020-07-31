@@ -8,5 +8,6 @@ export default (callback: Function, deps: any[] = []) => {
     } else {
       return callback();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [callback, ...deps]);
 };

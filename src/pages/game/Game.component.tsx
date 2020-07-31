@@ -4,6 +4,7 @@ import useDidUpdate from 'src/hooks/useDidUpdate';
 import { PieceValue } from './types';
 import BoardComponent from './components/board/Board.component';
 import checkWinner from 'src/utils/checkWinner';
+import * as Styled from './game.styled';
 
 const GameComponent = () => {
   const [board, setBoard] = useState<PieceValue[]>(Array(9).fill(null));
@@ -25,12 +26,18 @@ const GameComponent = () => {
   };
 
   return (
-    <div>
-      <BoardComponent pieces={board} onClick={(i: number) => handleClick(i)} />
-      <div>
+    <Styled.Container>
+      <Styled.Title hasWinner={!!winner}>
         {winner ? `Winner: ${winner}` : `Please ${nextPlayer} player put piece`}
-      </div>
-    </div>
+      </Styled.Title>
+      <hr />
+      <Styled.BoardWrapper>
+        <BoardComponent
+          pieces={board}
+          onClick={(i: number) => handleClick(i)}
+        />
+      </Styled.BoardWrapper>
+    </Styled.Container>
   );
 };
 

@@ -1,14 +1,18 @@
 import styled from 'styled-components';
 import { PieceValue } from 'src/pages/game/types';
+import styles from 'src/styles';
+
+const { colors, mixins } = styles;
 
 interface SquarePieceProps {
   piece: PieceValue;
 }
 
 export const SquarePiece = styled.div<SquarePieceProps>`
-  width: 35px;
-  height: 35px;
-  color: ${(props) => (props.piece === 'X' ? 'red' : 'blue')};
-  font-size: 24px;
-  border: 1px solid #999;
+  width: 100px;
+  height: 100px;
+  color: ${(props) => (props.piece === 'X' ? colors.red : colors.blue)};
+  font-size: 60px;
+  border: 1px solid ${colors.black};
+  ${mixins.flexCenter()}
 `;
