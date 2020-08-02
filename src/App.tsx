@@ -1,12 +1,18 @@
 import React from 'react';
-import './App.css';
-import GameComponent from './pages/game/Game.component';
+import { Provider as ReduxProvider } from 'react-redux';
+
+import Game from './pages/game';
+import rootReducer from './redux';
+
+import { configureStore } from './redux/utils';
+
+const store = configureStore({ rootReducer });
 
 function App() {
   return (
-    <div className="App">
-      <GameComponent />
-    </div>
+    <ReduxProvider store={store}>
+      <Game />
+    </ReduxProvider>
   );
 }
 

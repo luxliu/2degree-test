@@ -1,14 +1,14 @@
 import React from 'react';
-import { render, fireEvent, RenderResult } from '@testing-library/react';
+import { renderWithRedux, fireEvent, RenderResult } from 'src/utils/test';
 
-import Game from './Game.component';
+import Game from './Game.container';
 
 let wrapper: RenderResult;
 let squares: HTMLElement[];
 
 describe('test Square component', () => {
   beforeEach(() => {
-    wrapper = render(<Game />);
+    wrapper = renderWithRedux(<Game />);
     squares = wrapper.getAllByTestId('square');
   });
 

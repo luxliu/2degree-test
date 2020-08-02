@@ -1,1 +1,3 @@
-export * from './Game.component';
+import Game from './Game.container';
+
+export default Game;

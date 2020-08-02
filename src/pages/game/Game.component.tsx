@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import useDidUpdate from 'src/hooks/useDidUpdate';
-import { PieceValue } from './types';
+import { GameProps } from './types';
 import BoardComponent from './components/board/Board.component';
 import checkWinner from 'src/utils/checkWinner';
 import * as Styled from './game.styled';
 
-const GameComponent = () => {
-  const [board, setBoard] = useState<PieceValue[]>(Array(9).fill(null));
-  const [nextPlayer, setNextPlayer] = useState<PieceValue>('O');
-  const [winner, setWinner] = useState<PieceValue>(null);
+const GameComponent: React.FC<GameProps> = ({
+  board,
+  nextPlayer,
+  winner,
+  actions,
+}) => {
+  const { setBoard, setNextPlayer, setWinner } = actions;
 
   useDidUpdate(() => {
     setWinner(checkWinner(board));
@@ -20,8 +23,9 @@ const GameComponent = () => {
       return;
     }
 
-    board[i] = nextPlayer;
-    setBoard(board);
+    const newBoard = [...board];
+    newBoard[i] = nextPlayer;
+    setBoard(newBoard);
     setNextPlayer(nextPlayer === 'O' ? 'X' : 'O');
   };
 

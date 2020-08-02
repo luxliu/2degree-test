@@ -4,7 +4,7 @@ import * as Styled from './board.styled';
 import { PieceValue } from 'src/pages/game/types';
 import SquareComponent from '../square/Square.component';
 
-interface BoardProps {
+export interface BoardProps {
   pieces: PieceValue[];
   onClick: (i: number) => void;
 }
