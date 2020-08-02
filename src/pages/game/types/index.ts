@@ -1,4 +1,4 @@
-import { ActionFunctions, Action } from 'redux-actions';
+import { Action } from 'redux-actions';
 import { ActionCreatorsMapObject } from 'redux';
 
 export type PieceValue = 'X' | 'O' | null;
